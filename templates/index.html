@@ -13,11 +13,11 @@
             {% else %}
                 <td class="post-vote"></td>
             {% endif %}
-            <td class="post-title"><a href="/item/{{ post.id }}">{{ post.title|capfirst|truncatewords:"23" }}</a> &nbsp; - &nbsp; <span class="post-link">{{ post.url|urlize }}</span></td>
+            <td class="post-title"><a href="{{post.url}}">{{ post.title|capfirst|truncatewords:"50" }}</a><span class="post-link">({{ post.url|urlize }})</span></td>
         </tr>
         <tr>
             <td class="post-date" colspan="2">&nbsp;</td>
-            <td class="post-date small"><span class="post-points">{{ post.points }} point{{ post.points|pluralize }}</span> by {{ post.nickname }} {{ post.date|timesince }} ago</td>
+            <td class="post-date small"><span class="post-points">{{ post.points }} point{{ post.points|pluralize }}</span> by {{ post.nickname }} {{ post.date|timesince }} ago | <span class="post-comments"> <a href="/item/{{ post.id }}">comments</a></span></td>
         </tr>
         {% endfor %}
     </table>

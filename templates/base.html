@@ -16,12 +16,12 @@
   </head>
   <body>
     <div id="menubar">
-        <a href="/"><img src="/static/images/true.png"\>True Founder News</a> &nbsp; | &nbsp; <a href="/newest">new</a> &nbsp; | &nbsp; <a href="/post">add new</a> &nbsp; | &nbsp; {% if user %}<a href="{{ logout }}">logout &nbsp; {{ user }} &nbsp; {{ usermeta.points }}&#176;</a>{% else %}<a href="{{ login }}">login</a>{% endif %}
+        <div id="logo"><a href="/"><img src="/static/images/true.png"\></a></div><div id="navmenu"><a href="/">True Founder News</a> | <a href="/newest">new</a> | <a href="/post">post</a> | {% if user %}<a href="{{ logout }}">logout</a> | {{ user }} ({{ usermeta.points }}){% else %}<a href="{{ login }}">login</a>{% endif %}</div>
     </div>
     <div id="content">
     {% block body %}{% endblock %}
     </div>
-    <div id="footer"><a href="http://code.google.com/p/appengine-socialnews/">Source code here.</a> &nbsp; A rough port of <a href="http://news.ycombinator.com">Hacker News</a> to <a href="http://code.google.com/appengine/">Google App Engine</a> by <a href="mailto:mbenjaminsmith[@]gmail[.]com">Matthew</a>.</div>
+    <div id="footer">You can fork this site <a href="http://github.com/kordless/true-hackers">on Github</a>.  Risk. Learn.  Live.</div>
     <script type="text/javascript">
       $('.vote a').click(function() {
           var me = $(this);

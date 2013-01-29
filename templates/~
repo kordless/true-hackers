@@ -2,11 +2,15 @@
 {% block body %}
     <table cellspacing="0">
     <tr>
-       <td class="post-title"><a href="{{item.url}}">{{ item.title|capfirst|truncatewords:"50" }}</a><span class="post-link">({{ item.url|urlize }})</span>
+       <td class="post-title"><a href="{{item.url}}">{{ item.title|capfirst|truncatewords:"50" }}</a><span class="post-link">({{ item.url|urlize }})</span></td>
     {% ifequal user item.nickname %}
-    <span class="user-links"><a href="/post/{{ item.id }}">edit</a> | <a href="/post/{{ item.id }}/delete">delete</a></span>
-    {% endifequal %}
+    <td>
+    <div class="item-edit">
+        <a href="/post/{{ item.id }}">(edit)</a> <a href="/post/{{ item.id }}/delete">(delete)</a>
+    </div>
     </td>
+    {% endifequal %}
+
     </tr>
     <tr><td class="post-text">{{ item.text }}</td></tr>
     </table>
@@ -33,7 +37,7 @@
         <div class="comment-reply">
         {% if user %}
             {% ifequal user comment.nickname %}
-            <span class="comment-links"><a href="/comment/{{ comment.postid }}/{{ comment.parentid }}/{{ comment.depth }}/{{ comment.id }}">edit</a> | <a href="/comment/{{ comment.postid }}/{{ comment.parentid }}/{{ comment.depth }}/{{ comment.id }}/delete">delete</a></span> 
+            <a href="/comment/{{ comment.postid }}/{{ comment.parentid }}/{{ comment.depth }}/{{ comment.id }}">(edit)</a>-<a href="/comment/{{ comment.postid }}/{{ comment.parentid }}/{{ comment.depth }}/{{ comment.id }}/delete">(delete)</a> 
             {% else %}
             <a href="/comment/{{ comment.postid }}/{{ comment.id }}/{{ comment.depth|add:1 }}">reply</a> 
             {% endifequal %}
